@@ -1,0 +1,62 @@
+# RV32I Base Instruction Set                         TYPE
+
+imm[31:12] rd 0110111 LUI                            U
+imm[31:12] rd 0010111 AUIPC                          U
+imm[20|10:1|11|19:12] rd 1101111 JAL                 J
+imm[11:0] rs1 000 rd 1100111 JALR                    JR
+imm[12|10:5] rs2 rs1 000 imm[4:1|11] 1100011 BEQ     B
+imm[12|10:5] rs2 rs1 001 imm[4:1|11] 1100011 BNE     B
+imm[12|10:5] rs2 rs1 100 imm[4:1|11] 1100011 BLT     B
+imm[12|10:5] rs2 rs1 101 imm[4:1|11] 1100011 BGE     B
+imm[12|10:5] rs2 rs1 110 imm[4:1|11] 1100011 BLTU    B
+imm[12|10:5] rs2 rs1 111 imm[4:1|11] 1100011 BGEU    B
+imm[11:0] rs1 000 rd 0000011 LB                      I-load/store
+imm[11:0] rs1 001 rd 0000011 LH                      I-load/store
+imm[11:0] rs1 010 rd 0000011 LW                      I-load/store
+imm[11:0] rs1 100 rd 0000011 LBU                     I-load/store
+imm[11:0] rs1 101 rd 0000011 LHU                     I-load/store
+imm[11:5] rs2 rs1 000 imm[4:0] 0100011 SB            S-load/store
+imm[11:5] rs2 rs1 001 imm[4:0] 0100011 SH            S-load/store
+imm[11:5] rs2 rs1 010 imm[4:0] 0100011 SW            S-load/store
+imm[11:0] rs1 000 rd 0010011 ADDI                    I
+imm[11:0] rs1 010 rd 0010011 SLTI                    I
+imm[11:0] rs1 011 rd 0010011 SLTIU                   I
+imm[11:0] rs1 100 rd 0010011 XORI                    I
+imm[11:0] rs1 110 rd 0010011 ORI                     I
+imm[11:0] rs1 111 rd 0010011 ANDI                    I
+0000000 shamt rs1 001 rd 0010011 SLLI                R
+0000000 shamt rs1 101 rd 0010011 SRLI                R
+0100000 shamt rs1 101 rd 0010011 SRAI                R
+0000000 rs2 rs1 000 rd 0110011 ADD                   R
+0100000 rs2 rs1 000 rd 0110011 SUB                   R
+0000000 rs2 rs1 001 rd 0110011 SLL                   R
+0000000 rs2 rs1 010 rd 0110011 SLT                   R
+0000000 rs2 rs1 011 rd 0110011 SLTU                  R
+0000000 rs2 rs1 100 rd 0110011 XOR                   R
+0000000 rs2 rs1 101 rd 0110011 SRL                   R
+0100000 rs2 rs1 101 rd 0110011 SRA                   R
+0000000 rs2 rs1 110 rd 0110011 OR                    R
+0000000 rs2 rs1 111 rd 0110011 AND                   R
+0000 pred succ 00000 000 00000 0001111 FENCE         FENCE
+0000 0000 0000 00000 001 00000 0001111 FENCE.I       FENCE
+000000000000 00000 000 00000 1110011 ECALL           System
+000000000001 00000 000 00000 1110011 EBREAK          System
+csr rs1 001 rd 1110011 CSRRW                         CSR
+csr rs1 010 rd 1110011 CSRRS                         CSR
+csr rs1 011 rd 1110011 CSRRC                         CSR
+csr zimm 101 rd 1110011 CSRRWI                       CSR
+csr zimm 110 rd 1110011 CSRRSI                       CSR
+csr zimm 111 rd 1110011 CSRRCI                       CSR
+
+
+
+# RV32M Standard Extension                           TYPE
+
+0000001 rs2 rs1 000 rd 0110011 MUL                   R
+0000001 rs2 rs1 001 rd 0110011 MULH                  R
+0000001 rs2 rs1 010 rd 0110011 MULHSU                R
+0000001 rs2 rs1 011 rd 0110011 MULHU                 R
+0000001 rs2 rs1 100 rd 0110011 DIV                   R
+0000001 rs2 rs1 101 rd 0110011 DIVU                  R
+0000001 rs2 rs1 110 rd 0110011 REM                   R
+0000001 rs2 rs1 111 rd 0110011 REMU                  R

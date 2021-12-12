@@ -1,0 +1,5 @@
+# Configs
+/sftp-config.json
+
+# Cache
+__pycache__/

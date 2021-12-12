@@ -1,0 +1,7 @@
+{
+	"assert_equal": "Assertion error: {value1} != {value2}",
+	"assert_not_equal": "Assertion error: {value1} == {value2}",
+	"assert_cond": "Assertion error",
+
+	"welcome": "Welcome to ELF disassembler. Feel free to disable any warning if needed - just comment them."
+}

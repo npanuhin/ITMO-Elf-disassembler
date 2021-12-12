@@ -1,0 +1,65 @@
+# Table 12.4: Instruction listing for RVC, Quadrant 0.             TYPE
+
+# 000 0 0 00 Illegal instruction
+000 nzuimm[5:4|9:6|2|3] rd′ 00 C.ADDI4SPN                          CIW
+# 001 uimm[5:3] rs1′ uimm[7:6] rd′ 00 C.FLD
+# 001 uimm[5:4|8] rs1′ uimm[7:6] rd′ 00 C.LQ
+010 uimm[5:3] rs1′ uimm[2|6] rd′ 00 C.LW                           CL
+# 011 uimm[5:3] rs1′ uimm[2|6] rd′ 00 C.FLW
+# 011 uimm[5:3] rs1′ uimm[7:6] rd′ 00 C.LD
+# 100 — 00 Reserved
+# 101 uimm[5:3] rs1′ uimm[7:6] rs2′ 00 C.FSD
+# 101 uimm[5:4|8] rs1′ uimm[7:6] rs2′ 00 C.SQ
+110 uimm[5:3] rs1′ uimm[2|6] rs2′ 00 C.SW                          CL
+# 111 uimm[5:3] rs1′ uimm[2|6] rs2′ 00 C.FSW
+# 111 uimm[5:3] rs1′ uimm[7:6] rs2′ 00 C.SD
+
+
+
+# Table 12.5: Instruction listing for RVC, Quadrant 1.             TYPE
+
+000 0 int(0,5) int(0,5) 01 C.NOP                                   NOP
+000 nzimm[5] rs1/rd!=0 nzimm[4:0] 01 C.ADDI                        C
+001 imm[11|4|9:8|10|6|7|3:1|5] 01 C.JAL                            CJ
+# 001 imm[5] rs1/rd!=0 imm[4:0] 01 C.ADDIW
+010 imm[5] rd!=0 imm[4:0] 01 C.LI                                  C
+011 nzimm[9] int(2,5) nzimm[4|6|8:7|5] 01 C.ADDI16SP               CSP2
+011 nzimm[17] rd!={0,2} nzimm[16:12] 01 C.LUI                      C
+100 nzuimm[5] 00 rs1′/rd′ nzuimm[4:0] 01 C.SRLI                    CI2
+# 100 0 00 rs1′/rd′ 0 01 C.SRLI64
+100 nzuimm[5] 01 rs1′/rd′ nzuimm[4:0] 01 C.SRAI                    CI2
+# 100 0 01 rs1′/rd′ 0 01 C.SRAI64
+100 imm[5] 10 rs1′/rd′ imm[4:0] 01 C.ANDI                          CI2
+100 0 11 rs1′/rd′ 00 rs2′ 01 C.SUB                                 CS
+100 0 11 rs1′/rd′ 01 rs2′ 01 C.XOR                                 CS
+100 0 11 rs1′/rd′ 10 rs2′ 01 C.OR                                  CS
+100 0 11 rs1′/rd′ 11 rs2′ 01 C.AND                                 CS
+# 100 1 11 rs1′/rd′ 00 rs2′ 01 C.SUBW
+# 100 1 11 rs1′/rd′ 01 rs2′ 01 C.ADDW
+# 100 1 11 — 10 — 01 Reserved
+# 100 1 11 — 11 — 01 Reserved
+101 imm[11|4|9:8|10|6|7|3:1|5] 01 C.J                              CJ
+110 imm[8|4:3] rs1′ imm[7:6|2:1|5] 01 C.BEQZ                       CB
+111 imm[8|4:3] rs1′ imm[7:6|2:1|5] 01 C.BNEZ                       CB
+
+
+
+# Table 12.6: Instruction listing for RVC, Quadrant 2.             TYPE
+
+000 nzuimm[5] rs1/rd!=0 nzuimm[4:0] 10 C.SLLI                      C
+# 000 0 rs1/rd!=0 0 10 C.SLLI64
+# 001 uimm[5] rd uimm[4:3|8:6] 10 C.FLDSP
+# 001 uimm[5] rd!=0 uimm[4|9:6] 10 C.LQSP
+010 uimm[5] rd!=0 uimm[4:2|7:6] 10 C.LWSP                          CSP
+# 011 uimm[5] rd uimm[4:2|7:6] 10 C.FLWSP
+# 011 uimm[5] rd!=0 uimm[4:3|8:6] 10 C.LDSP
+100 0 rs1!=0 int(0,5) 10 C.JR                                      CJR
+100 0 rd!=0 rs2!=0 10 C.MV                                         CI2R
+100 1 int(0,5) int(0,5) 10 C.EBREAK                                CSNG
+100 1 rs1!=0 int(0,5) 10 C.JALR                                    CJR
+100 1 rs1/rd!=0 rs2!=0 10 C.ADD                                    CI2R
+# 101 uimm[5:3|8:6] rs2 10 C.FSDSP
+# 101 uimm[5:4|9:6] rs2 10 C.SQSP
+110 uimm[5:2|7:6] rs2 10 C.SWSP                                    CSP
+# 111 uimm[5:2|7:6] rs2 10 C.FSWSP
+# 111 uimm[5:3|8:6] rs2 10 C.SDSP
