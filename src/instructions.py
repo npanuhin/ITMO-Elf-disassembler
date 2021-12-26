@@ -1,3 +1,10 @@
+#                                    ┌───────────────────────────────────────────┐
+#                                    │    Copyright (c) 2021 Nikita Paniukhin    │
+#                                    │      Licensed under the MIT license       │
+#                                    └───────────────────────────────────────────┘
+#
+# ======================================================================================================================
+
 from instruction_formatter import format_instruction
 from traceback import print_exc
 from os.path import isfile
